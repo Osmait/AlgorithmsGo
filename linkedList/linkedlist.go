@@ -26,6 +26,32 @@ func NewSingly[T any]() *Singly[T] {
 	return &Singly[T]{}
 }
 
+func (ll *Singly[T]) AddAll(position string, val ...T) error {
+	for _, v := range val {
+		n := NewNode(v)
+		if position == "front" {
+			n.Next = ll.Head
+			ll.Head = n
+			ll.length++
+		} else if position == "back" {
+			if ll.Head == nil {
+				ll.Head = n
+				ll.length++
+				return nil
+			}
+			cur := ll.Head
+			for ; cur.Next != nil; cur = cur.Next {
+			}
+			cur.Next = n
+			ll.length++
+		} else {
+			return fmt.Errorf("%s, Don't is Valid position", position)
+		}
+
+	}
+	return nil
+}
+
 func (ll *Singly[T]) AddAtBeg(val T) {
 	n := NewNode(val)
 	n.Next = ll.Head
@@ -160,7 +186,8 @@ func (ll *Singly[T]) CheckRangeFromIndex(left, right int) error {
 
 func (ll *Singly[T]) Display() {
 	for cur := ll.Head; cur != nil; cur = cur.Next {
-		fmt.Print(cur.Val, " ")
+		fmt.Print(cur.Val, "->")
+
 	}
 	fmt.Print("\n")
 }

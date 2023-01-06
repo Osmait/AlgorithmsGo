@@ -3,34 +3,26 @@ package main
 import (
 	"fmt"
 
+	"github.com/osmait/algorithmigo/challenger"
 	linkedlist "github.com/osmait/algorithmigo/linkedList"
 )
 
 func main() {
 
-	var i int
+	list := linkedlist.NewSingly[int]()
 
-	for {
-		fmt.Println("1-Ingresar un Dato: ")
-		fmt.Println("2-Eliminar al primero ")
-		fmt.Println("3-Ver  Almacen ")
-
-		fmt.Scan(&i)
-		almancen := linkedlist.NewSingly[int]()
-		almancen.Display()
-
-		switch i {
-		case 1:
-
-		case 2:
-			almancen.DelAtBeg()
-		case 3:
-			almancen.Display()
-
-		default:
-			fmt.Println("opcion invalida")
-
-		}
+	err := list.AddAll("front", 1, 2, 3, 4, 5)
+	if err != nil {
+		fmt.Print(err)
 	}
 
+	fmt.Println(challenger.IterativeFactorial(5))
+	fmt.Println(challenger.RecurFactorial(5))
+	challenger.RecurPermutation("abc", "")
+
+	// list.AddAll("fdf", 1, 2, 3, 4, 5)
+	// head := list.Head.Val
+	// nextValue := list.Head.Next.Val
+	// fmt.Println(head + nextValue)
+	list.Display()
 }
