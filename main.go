@@ -19,6 +19,8 @@ func main() {
 	fmt.Println(challenger.IterativeFactorial(5))
 	fmt.Println(challenger.RecurFactorial(5))
 	challenger.RecurPermutation("abc", "")
+	total := 1 << 5 //1 * 2^5
+	fmt.Println(total)
 
 	// list.AddAll("fdf", 1, 2, 3, 4, 5)
 	// head := list.Head.Val
