@@ -7,11 +7,12 @@ func Binary(array []int, target, lowIndex, highIndex int) (int, error) {
 	mid := int(lowIndex + (highIndex-lowIndex)/2)
 	if array[mid] > target {
 		return Binary(array, target, lowIndex, mid-1)
-	} else if array[mid] < target {
-		return Binary(array, target, mid+1, highIndex)
-	} else {
-		return mid, nil
 	}
+	if array[mid] < target {
+		return Binary(array, target, mid+1, highIndex)
+	}
+	return mid, nil
+
 }
 
 func BinaryIterrative(array []int, target int) (int, error) {
